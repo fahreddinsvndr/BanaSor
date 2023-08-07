@@ -1,3 +1,5 @@
+import com.fahreddinsevindir.buildsrc.Deps
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,14 +7,14 @@ plugins {
 
 android {
     namespace = "com.fahreddinsevindir.banasor"
-    compileSdk = 33
+    compileSdk = com.fahreddinsevindir.buildsrc.Configuration.compileSdk
 
     defaultConfig {
-        applicationId = "com.fahreddinsevindir.banasor"
-        minSdk = 23
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = com.fahreddinsevindir.buildsrc.Configuration.applicationId
+        minSdk = com.fahreddinsevindir.buildsrc.Configuration.minSdk
+        targetSdk = com.fahreddinsevindir.buildsrc.Configuration.targetSdk
+        versionCode = com.fahreddinsevindir.buildsrc.Configuration.versionCode
+        versionName = com.fahreddinsevindir.buildsrc.Configuration.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -51,19 +53,30 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(Deps.AndroidX.Core.coreKtx)
+
+    implementation(Deps.AndroidX.Lifecycle.runtime)
+
+    implementation(Deps.AndroidX.Activity.compose)
+
+    with(Deps.AndroidX.Compose) {
+        implementation(platform(boom))
+        implementation(ui)
+        implementation(graphics)
+        implementation(toolingPreview)
+        implementation(material3)
+        debugImplementation(toolingPreview)
+        debugImplementation(uiTest)
+        androidTestImplementation(platform(boom))
+    }
+
+    with(Deps.Junit){
+        testImplementation(junit4)
+        androidTestImplementation(test)
+        androidTestImplementation(espresso)
+        androidTestImplementation(ui)
+    }
+
+
+
 }
