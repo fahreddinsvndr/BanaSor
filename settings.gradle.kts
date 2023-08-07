@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Bana Sor"
 include(":app")
+include(":splash")

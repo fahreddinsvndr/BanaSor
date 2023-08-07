@@ -27,6 +27,21 @@ object Deps {
             const val compose = "androidx.activity:activity-compose:${Version.activity_compose}"
         }
 
+        object AppCompat {
+            const val appCompat = "androidx.appcompat:appcompat:${Version.app_compat}"
+        }
+
+        object Navigation {
+            const val compose = "androidx.navigation:navigation-compose:${Version.navigation_version}"
+        }
+
+    }
+
+    object Google {
+
+        object Android {
+            const val material = "com.google.android.material:material:${Version.android_material}"
+        }
     }
 
 
@@ -38,6 +53,11 @@ object Deps {
     }
 
 
+    object AirBnb {
+
+        const val lottie = "com.airbnb.android:lottie-compose:${Version.lottie_version}"
+
+    }
 }
 
 

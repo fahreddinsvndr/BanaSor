@@ -1,25 +1,19 @@
 import com.fahreddinsevindir.buildsrc.Deps
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.fahreddinsevindir.banasor"
+    namespace = "com.fahreddinsevindir.splash"
     compileSdk = com.fahreddinsevindir.buildsrc.Configuration.compileSdk
 
     defaultConfig {
-        applicationId = com.fahreddinsevindir.buildsrc.Configuration.applicationId
         minSdk = com.fahreddinsevindir.buildsrc.Configuration.minSdk
-        targetSdk = com.fahreddinsevindir.buildsrc.Configuration.targetSdk
-        versionCode = com.fahreddinsevindir.buildsrc.Configuration.versionCode
-        versionName = com.fahreddinsevindir.buildsrc.Configuration.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -38,30 +32,30 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
 
-    implementation(project(":splash"))
-
     implementation(Deps.AndroidX.Core.coreKtx)
+
+    implementation(Deps.AndroidX.AppCompat.appCompat)
+
+    implementation(Deps.Google.Android.material)
+
+
+    implementation(Deps.AirBnb.lottie)
+
 
     implementation(Deps.AndroidX.Lifecycle.runtime)
 
     implementation(Deps.AndroidX.Activity.compose)
-
-    implementation(Deps.AndroidX.Navigation.compose)
 
     with(Deps.AndroidX.Compose) {
         implementation(platform(boom))
@@ -80,8 +74,6 @@ dependencies {
         androidTestImplementation(espresso)
         androidTestImplementation(ui)
     }
-
-
 
 
 }
