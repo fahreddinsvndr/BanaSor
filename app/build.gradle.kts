@@ -3,6 +3,8 @@ import com.fahreddinsevindir.buildsrc.Deps
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -32,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -54,6 +56,7 @@ android {
 dependencies {
 
     implementation(project(":splash"))
+    implementation(project(":onboarding"))
 
     implementation(Deps.AndroidX.Core.coreKtx)
 
@@ -62,6 +65,24 @@ dependencies {
     implementation(Deps.AndroidX.Activity.compose)
 
     implementation(Deps.AndroidX.Navigation.compose)
+
+    with(Deps.AndroidX.Lifecycle) {
+        implementation(viewModelKtx)
+        implementation(runtimeKtx)
+        implementation(viewModelCompose)
+        implementation(runtime)
+    }
+
+    with(Deps.Google.DaggerHilt) {
+        implementation(android)
+        implementation(navigationCompose)
+        kapt(compiler)
+    }
+
+    with(Deps.Org.Jetbrains.Kotlinx) {
+        implementation(coroutineCore)
+        implementation(coroutineAndroid)
+    }
 
     with(Deps.AndroidX.Compose) {
         implementation(platform(boom))
@@ -74,14 +95,12 @@ dependencies {
         androidTestImplementation(platform(boom))
     }
 
-    with(Deps.Junit){
+    with(Deps.Junit) {
         testImplementation(junit4)
         androidTestImplementation(test)
         androidTestImplementation(espresso)
         androidTestImplementation(ui)
     }
-
-
 
 
 }

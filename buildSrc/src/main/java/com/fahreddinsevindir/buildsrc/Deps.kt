@@ -21,6 +21,9 @@ object Deps {
         object Lifecycle {
             const val runtime =
                 "androidx.lifecycle:lifecycle-runtime-ktx:${Version.androidx_lifecycle}"
+            const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.androidx_lifecycle}"
+            const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.androidx_lifecycle}"
+            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.androidx_lifecycle}"
         }
 
         object Activity {
@@ -32,7 +35,8 @@ object Deps {
         }
 
         object Navigation {
-            const val compose = "androidx.navigation:navigation-compose:${Version.navigation_version}"
+            const val compose =
+                "androidx.navigation:navigation-compose:${Version.navigation_version}"
         }
 
     }
@@ -42,6 +46,19 @@ object Deps {
         object Android {
             const val material = "com.google.android.material:material:${Version.android_material}"
         }
+
+        object Accompanist {
+            const val pager = "com.google.accompanist:accompanist-pager:${Version.pager_version}"
+            const val pager_indicator =
+                "com.google.accompanist:accompanist-pager-indicators:${Version.pager_indicator}"
+        }
+
+        object DaggerHilt {
+            const val navigationCompose = "androidx.hilt:hilt-navigation-compose:${Version.navigation_hilt}"
+            const val android = "com.google.dagger:hilt-android:${Version.hilt_version}"
+            const val compiler = "com.google.dagger:hilt-compiler:${Version.hilt_compiler}"
+        }
+
     }
 
 
@@ -57,6 +74,16 @@ object Deps {
 
         const val lottie = "com.airbnb.android:lottie-compose:${Version.lottie_version}"
 
+    }
+
+    object Org {
+        object Jetbrains {
+            object Kotlinx {
+                const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.kotlinx_coroutines}"
+                const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.kotlinx_coroutines}"
+                const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.kotlinx_coroutines}"
+            }
+        }
     }
 }
 

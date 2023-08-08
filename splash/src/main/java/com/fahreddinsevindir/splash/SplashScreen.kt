@@ -16,7 +16,9 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.fahreddinsevindir.splash.componets.CustomSplash
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(
+    navigateToOnboardingScreen: () -> Unit
+) {
     val composition: LottieCompositionResult =
         rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.splash))
     val progress by animateLottieCompositionAsState(
@@ -26,7 +28,7 @@ fun SplashScreen() {
 
     LaunchedEffect(progress) {
         if (progress >= 1f) {
-
+            navigateToOnboardingScreen.invoke()
         }
     }
 

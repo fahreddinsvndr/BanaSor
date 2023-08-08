@@ -14,7 +14,9 @@ import androidx.navigation.compose.rememberNavController
 import com.fahreddinsevindir.banasor.navigation.NavGraph
 import com.fahreddinsevindir.banasor.navigation.Screen
 import com.fahreddinsevindir.banasor.ui.theme.BanaSorTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {

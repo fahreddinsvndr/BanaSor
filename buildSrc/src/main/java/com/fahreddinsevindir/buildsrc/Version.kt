@@ -31,4 +31,18 @@ object Version {
     // Navigation
     const val navigation_version = "2.6.0"
 
+    // Pager
+    const val pager_version = "0.26.4-beta"
+    const val pager_indicator = "0.26.4-beta"
+
+    //Dagger- Hilt
+    const val hilt_version = "2.45"
+    const val hilt_compiler = "2.45"
+    const val navigation_hilt = "1.0.0"
+
+    // Coroutines
+    const val kotlinx_coroutines = "1.6.4"
+
+
+
 }

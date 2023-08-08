@@ -3,14 +3,16 @@ import com.fahreddinsevindir.buildsrc.Deps
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+
 }
 
 android {
-    namespace = "com.fahreddinsevindir.splash"
-    compileSdk = com.fahreddinsevindir.buildsrc.Configuration.compileSdk
+    namespace = "com.fahreddinsevindir.onboarding"
+    compileSdk = 33
 
     defaultConfig {
-        minSdk = com.fahreddinsevindir.buildsrc.Configuration.minSdk
+        minSdk = 23
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -32,7 +34,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
     buildFeatures {
         compose = true
     }
@@ -57,6 +58,29 @@ dependencies {
 
     implementation(Deps.AndroidX.Activity.compose)
 
+    implementation(Deps.Google.Accompanist.pager)
+
+    implementation(Deps.Google.Accompanist.pager_indicator)
+
+    with(Deps.AndroidX.Lifecycle) {
+        implementation(viewModelKtx)
+        implementation(runtimeKtx)
+        implementation(viewModelCompose)
+        implementation(runtime)
+    }
+
+    with(Deps.Google.DaggerHilt) {
+        implementation(android)
+        implementation(navigationCompose)
+        kapt(compiler)
+    }
+
+    with(Deps.Org.Jetbrains.Kotlinx) {
+        implementation(coroutineCore)
+        implementation(coroutineAndroid)
+    }
+
+
     with(Deps.AndroidX.Compose) {
         implementation(platform(boom))
         implementation(ui)
@@ -68,12 +92,11 @@ dependencies {
         androidTestImplementation(platform(boom))
     }
 
-    with(Deps.Junit){
+    with(Deps.Junit) {
         testImplementation(junit4)
         androidTestImplementation(test)
         androidTestImplementation(espresso)
         androidTestImplementation(ui)
     }
-
 
 }

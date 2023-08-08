@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_screen_title">Hangisi Ya?</string>
+    <string name="first_screen_desc">Hangi ürünü alacağın için artık kararsız kalmicaksın.</string>
+    <string name="second_screen_title">Hangi Marka?</string>
+    <string name="second_screen_desc">Sana en uygun marka.</string>
+    <string name="third_screen_title">Bana Sor ?</string>
+    <string name="third_screen_desc">Senin için en iyi çözüm.</string>
+    <string name="lets_start">Hadi Başlayalım</string>
+    <string name="next">Geç</string>
+</resources>

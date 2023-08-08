@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.fahreddinsevindir.onboarding.OnBoardingScreen
 import com.fahreddinsevindir.splash.SplashScreen
 
 @Composable
@@ -20,7 +21,23 @@ fun NavGraph(navController: NavHostController, paddingValues: PaddingValues) {
     ) {
 
         composable(route = Screen.Splash.route) {
-            SplashScreen()
+            SplashScreen(
+                navigateToOnboardingScreen = {
+                    navController.navigate(Screen.OnBoarding.route){
+                        popUpTo(Screen.Splash.route) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable(route = Screen.OnBoarding.route) {
+            OnBoardingScreen(
+                popBackStack = {
+                    navController.popBackStack()
+                }
+            )
         }
 
 
