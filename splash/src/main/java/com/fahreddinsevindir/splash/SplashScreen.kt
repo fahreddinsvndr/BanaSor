@@ -13,6 +13,7 @@ import com.airbnb.lottie.compose.LottieCompositionResult
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.fahreddinsevindir.splash.componets.CustomSplash
 
 @Composable
 fun SplashScreen() {
@@ -34,11 +35,7 @@ fun SplashScreen() {
         Arrangement.Center,
         Alignment.CenterHorizontally
     ) {
-        //TODO Change Lottie Animation
-        LottieAnimation(
-            composition.value,
-            progress,
-        )
+        CustomSplash(modifier = Modifier, resources = R.raw.splash)
     }
 
 
